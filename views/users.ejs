@@ -1,0 +1,17 @@
+<%- include('includes/head.ejs'); %>
+</head>
+
+<%- include('includes/navigation.ejs'); %>
+
+<body>
+  <div class="main">
+    <h1><%= path %></h1>
+    <h1><%= title %></h1>
+    <% if (user === null) { %>
+    <p> Pleas insert a valid user</p>
+    <%} else { %>
+    <p>Welcome <%= user %></p>
+    <% } %>
+  </div>
+
+  <%- include('includes/end.ejs'); %>

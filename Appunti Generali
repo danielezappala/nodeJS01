@@ -1,0 +1,5 @@
+npm init: crea il file package.json
+nel file package.json è possibile configurare dei comandi nella sezione script  (es. "start": "node app.js",)
+lo script start viene avviato da console con il comando npm
+gli altri script con il comando "npm run"
+per installare un package usare il comando "npm install <package name>" 

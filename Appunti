@@ -1,0 +1,6 @@
+Creare un server che risponda a richieste indirizzate verso la porta 3000
+Gestire 2 routes: "/" e "/users"
+Restituire un saluto di benvenuto su "/"
+Restituire una lista in html di utenti su "/users"
+Creare un form con input "username" e un pulsante per inviare una reuqest POST a "/create-user"
+Creare una routes "/create-user" con un semplice logo alla console e un reindirizzamento ad uno dei routes
