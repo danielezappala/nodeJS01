@@ -1,3 +1,4 @@
+/*
 const db = require('../util/database');
 
 module.exports = class Cliente {
@@ -24,3 +25,5 @@ module.exports = class Cliente {
     return db.execute('SELECT * FROM clienti WHERE clienti.id = ?', [id]);
   }
 };
+
+*/
