@@ -3,3 +3,13 @@ nel file package.json è possibile configurare dei comandi nella sezione script 
 lo script start viene avviato da console con il comando npm
 gli altri script con il comando "npm run"
 per installare un package usare il comando "npm install <package name>" 
+
+npm nodemon: riavvia il server dopo ogni modifica
+
+npm install --save express: installa expressjs
+npm express-generator -e : genera l'albero delle cartelle e configura ejs come view engine
+
+npm install --save sql2: installa il modulo per la gestione di un database mysql
+npm install --save sequelize installa il modulo per il mapping di un database in oggetti
+
+
