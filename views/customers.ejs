@@ -1,38 +1,46 @@
 <%- include('includes/head.ejs'); %>
+
 </head>
 
 <%- include('includes/navigation.ejs'); %>
 
 <body>
   <div class="main">
-    <h1><%= path %></h1>
     <h1><%= title %></h1>
     <% if (clienti.length > 0) { %>
       <div class="grid">
           <% for (let cliente of clienti) { %>
               <article class="card product-item">
                   <header class="card__header">
-                      <h1 class="product__title">
-                          <%= cliente.cognome %>
-                      </h1>
+                      <p class="product__title">
+                          <%= cliente.name + ' ' + cliente.surname %>
+                      <p>
                   </header>
                   <div class="card__image">
                       <img src="<%= clienti.cognome %>" alt="<%= clienti.cognome %>">
                   </div>
                   <div class="card__content">
                       <h2 class="product__price">
-                          <%= clienti.cognome %>
+                          <%= clienti.surname %>
                       </h2>
                       <p class="product__description">
-                          <%= clienti.cognome %>
+                          <%= clienti.name %>
                       </p>
                   </div>              
               </article>
               <% } %>
       </div>
       <% } else { %>
-          <h1>Nessun client trovato</h1>
+          <h3>Nessun cliente trovato</h3>
+          
           <% } %>
+          <div class="card__actions">
+            <form action="/clienti/edit-customer" method="GET">
+                <input type="hidden" value="<%= false %>" name="editing">
+                <button class="btn" type="submit">Aggiungi cliente</button>
+            </form>
+
+        </div>
   </div>
 
   <%- include('includes/end.ejs'); %>

@@ -14,17 +14,3 @@ exports.getHome = (req, res, next) => {
             path: '>home', 
           });
 };
-exports.getClienti = (req, res, next) => {
-  console.log('getClienti');
-  Cliente.fetchAll()
-    .then(([rows, fieldData]) => {
-      res.render('clienti', {
-        clienti: rows,
-        title: 'Elenco clienti',
-        path: '>clienti'
-      });
-    })
-    .catch(err => console.log(err));
-};
-
-

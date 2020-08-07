@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 const Customer = sequelize.define('customer',{
     id:{
         type: Sequelize.INTEGER,
-        autoincrement: null,
+        autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
@@ -12,10 +12,10 @@ const Customer = sequelize.define('customer',{
         type: Sequelize.STRING,
         allowNull: false
     },
-    cognome: {
+    surname: {
         type: Sequelize.STRING,
         allowNull: false
     }
 });
 
-module.exports.Customer;
+module.exports = Customer;
