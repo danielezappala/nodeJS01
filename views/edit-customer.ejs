@@ -1,28 +1,30 @@
-<%- include('./includes/head.ejs') %>
-<link rel='stylesheet' href='/stylesheets/main.css' />
+<%- include('includes/head.ejs'); %>
 </head>
-
+<%- include('includes/navigation.ejs'); %>
 <body>
-   <%- include('./includes/navigation.ejs') %>
-
     <main>
-        Editing = <%= editing %>
-        <form class="product-form" action="/clienti/<% if (editing) { %>edit-customer<% } else { %>add-customer<% } %>" method="POST">
-            <hr>
-            <hr>
-            <div class="form-control">
-                <label for="name">Nome</label>
-                <input type="text" name="name" id="name" value="<% if (editing) { %><%= clienti.name %><% } %>">
+        <form class="col s12" action="/clienti/<% if (editing) { %>edit-customer<% } else { %>add-customer<% } %>" method="POST">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" name="name" id="name" value="<% if (editing) { %><%= clienti.name %><% } %>">
+                    <label for="name">Nome</label>
+                </div>
             </div>
-            <div class="form-control">
+            <div class="row">
+            <div class="input-field col m6 s12">
+                <input type="text" class="validate" name="surname" id="surname" value="<% if (editing) { %><%= clienti.surname %><% } %>">
                 <label for="surname">Cognome</label>
-                <input type="text" name="surname" id="surname" value="<% if (editing) { %><%= clienti.surname %><% } %>">
+                
+            </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input type="hidden" value="<%= clienti.id %>" name="customerId" id="customerId">
+                    <button class="btn" type="submit"><% if (editing) { %>Aggiorna cliente<% } else { %>Salva<% } %></button>
+                </div>
             </div>
             
-            
-                <input type="hidden" value="<%= clienti.id %>" name="customerId">
-                <button class="btn" type="submit"><% if (editing) { %>Aggiorna cliente<% } else { %>Salva<% } %></button>
-
-            </form>
+        </form>
     </main>
-<%- include('./includes/end.ejs') %>
+
+ <%- include('includes/end.ejs'); %>

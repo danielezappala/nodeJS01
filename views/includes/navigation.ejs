@@ -1,13 +1,21 @@
-<div class="navbar">
-    <ul>
-        <li>
-            <a class="<%= path === '/home' ? 'active' : '' %>" href="/home">Home</a>
-        </li>
-        <li>
-            <a class="<%= path === '/first' ? 'active' : '' %>" href="/first">First</a>
-        </li>
-        <li>
-            <a class="<%= path === '/clienti' ? 'active' : '' %>" href="/clienti">Clienti</a>
-        </li>
-    </ul>
-</div>
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Logo</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down"></ul>>
+                    <li><a class="<%= path === '/home' ? 'active' : '' %>" href="/home">Home</a></li>
+                    <li><a class="<%= path === '/first' ? 'active' : '' %>" href="/first">First</a></li>
+                    <li><a class="<%= path === '/clienti' ? 'active' : '' %>" href="/clienti">Clienti</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="<%= path === '/home' ? 'active' : '' %>" href="/home">Home</a></li>
+            <li><a class="<%= path === '/first' ? 'active' : '' %>" href="/first">First</a></li>
+            <li><a class="<%= path === '/clienti' ? 'active' : '' %>" href="/clienti">Clienti</a></li>
+        </ul>
+    </div>
+</header>

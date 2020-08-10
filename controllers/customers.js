@@ -2,11 +2,13 @@ const Customer = require('../models/customer');
 
 exports.getCustomers = (req, res, next) => {
     console.log('getCustomers');
+    var editing = req.query.editing;
     Customer.findAll()
       .then((customers) => {
         res.render('customers', {
           clienti: customers,
           title: 'Elenco clienti',
+          editing: editing,
           path: '>clienti'
         });
       })
@@ -16,11 +18,13 @@ exports.getCustomers = (req, res, next) => {
   exports.getCustomerById = (req, res, next) => {
     console.log('getCustomerById');
     var customerId = req.params.customerId;
+    var editing = req.query.editing;
     Customer.findById(customerId)
       .then(customer => {
         res.render('customer', {
           clienti: customers,
           title: customer.surname,
+          editing: editing,
           path: '>customer'
         });
       })
@@ -28,7 +32,7 @@ exports.getCustomers = (req, res, next) => {
   };
   
   exports.editCustomer = (req, res, next) => {
-      console.log(req)
+    console.log('render edit-customer')
     var customerId = req.params.customerId;
     var editing = req.query.editing;
     console.log('editing ' + editing);
@@ -47,7 +51,7 @@ exports.getCustomers = (req, res, next) => {
       .catch(err => console.log(err))
     }
     else {
-        console.log('render edit-customer')
+        
         res.render('edit-customer', {
             clienti: [],
             title: 'Nuovo cliente',
@@ -58,13 +62,16 @@ exports.getCustomers = (req, res, next) => {
   };
   
   exports.postAddCustomer = (req, res, next) => {
+    
     const surname = req.body.surname;
     const name = req.body.name;
     console.log('postAddCustomer ' + surname);
+
      Customer.create(
       {
-        surname: surname,
-        name: name
+        name: name,
+        surname: surname
+        
       })
       .then(customer => {
         console.log('New customer created ' + customer.surname);
@@ -73,3 +80,12 @@ exports.getCustomers = (req, res, next) => {
         })
       .catch(err => console.log(err));
   };
+
+  exports.template = (req, res, next) => {
+    res.render('template', {
+        clienti: [],
+        title: 'Nuovo cliente',
+        editing: false,
+        path: '>customer'
+  })
+};

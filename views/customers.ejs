@@ -1,46 +1,60 @@
 <%- include('includes/head.ejs'); %>
-
 </head>
-
 <%- include('includes/navigation.ejs'); %>
 
 <body>
-  <div class="main">
-    <h1><%= title %></h1>
-    <% if (clienti.length > 0) { %>
-      <div class="grid">
-          <% for (let cliente of clienti) { %>
-              <article class="card product-item">
-                  <header class="card__header">
-                      <p class="product__title">
-                          <%= cliente.name + ' ' + cliente.surname %>
-                      <p>
-                  </header>
-                  <div class="card__image">
-                      <img src="<%= clienti.cognome %>" alt="<%= clienti.cognome %>">
-                  </div>
-                  <div class="card__content">
-                      <h2 class="product__price">
-                          <%= clienti.surname %>
-                      </h2>
-                      <p class="product__description">
-                          <%= clienti.name %>
-                      </p>
-                  </div>              
-              </article>
-              <% } %>
-      </div>
-      <% } else { %>
-          <h3>Nessun cliente trovato</h3>
-          
-          <% } %>
-          <div class="card__actions">
-            <form action="/clienti/edit-customer" method="GET">
-                <input type="hidden" value="<%= false %>" name="editing">
-                <button class="btn" type="submit">Aggiungi cliente</button>
-            </form>
+    <main>
+        <% if (clienti.length > 0) { %>
 
-        </div>
-  </div>
 
-  <%- include('includes/end.ejs'); %>
+        <td>
+            <h1><%= title %></h1>
+        </td>
+            <table class="highlight">
+                <!--td>
+                    <div class="card__actions">
+                        <form action="/clienti/edit-customer" method="GET">
+                            <div style="flex-flow: column;">
+                                <input type="hidden" value="<%= false %>" name="editing">
+                                <button class="btn" style="margin-left: 1rem;" type="submit">Aggiungi cliente</button>
+                            </div>
+                            </form>
+                    </div-->
+                </td>
+
+                <% for (let cliente of clienti) { %>
+                <tr>
+                    <td>
+                        <customer>
+                            <header>
+                                <div>
+                                    <%= cliente.name + ' ' + cliente.surname %>
+                                </div>
+                            </header>
+                        </customer>
+                    </td>
+                    <td><i class="material-icons">edit</i></td>
+                </tr>
+                <% } %>
+
+                <% } else { %>
+                <h3>Nessun cliente trovato</h3>
+                <% } %>
+            </table>
+
+            <div class="fixed-action-btn">
+                <a href="/clienti/edit-customer" class="btn-floating btn-large red">
+                    <i class="large material-icons">add</i>
+
+                </a>
+
+                <!--ul>
+                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                    <li><a href="/clienti/edit-customer" class="btn-floating yellow darken-1"><i
+                                class="material-icons">format_quote</i></a></li>
+                </ul-->
+            </div>
+
+    </main>
+
+    <%- include('includes/end.ejs'); %>

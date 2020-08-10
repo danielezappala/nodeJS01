@@ -24,6 +24,9 @@ router.get('/', (req,res,next)=> {
   }); 
 })
 
+router.get('/', function(req, res, next) {
+  res.redirect('clienti')
+});
 
 
 module.exports = router;
