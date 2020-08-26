@@ -1,22 +1,37 @@
 <header>
     <div class="navbar-fixed">
+        <% console.log(global.path) %>
         <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Logo</a>
-                <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down"></ul>
-                    <li><a class="<%= path === '/home' ? 'active' : '' %>" href="/home">Home</a></li>
-                    <li><a class="<%= path === '/first' ? 'active' : '' %>" href="/first">First</a></li>
-                    <li><a class="<%= path === '/clienti' ? 'active' : '' %>" href="/clienti">Clienti</a></li>
+            <div class="nav-wrapper light-blue darken-1">
+                    <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul>
+                    <li><a class="<%= global.path === '/home' ? 'active' : '' %>" href="/home">Home</span></a></li>
+                    <li><a class="<%= global.path === '/first' ? 'active' : '' %>" href="/first">First</span></a></li>
+                    <li><a class="<%= global.path === '/clienti' ? 'active' : '' %>" href="/clienti">Clienti</span></a></li>
+                    <li><a class="<%= global.path === '/abbonamenti' ? 'active' : '' %>"
+                            href="/abbonamenti">Abbonamenti</span></a></li>
                 </ul>
             </div>
-       
-
-        <ul class="sidenav" id="mobile-demo">
-            <li><a class="<%= path === '/home' ? 'active' : '' %>" href="/home">Home</a></li>
-            <li><a class="<%= path === '/first' ? 'active' : '' %>" href="/first">First</a></li>
-            <li><a class="<%= path === '/clienti' ? 'active' : '' %>" href="/clienti">Clienti</a></li>
-        </ul>
-    </nav>
+        </nav>
     </div>
+
+
+
+    <ul class="sidenav light-blue darken-1" id="mobile-demo">
+        <li>
+            <div>
+                <div class="background">
+                    <img src="/images/logo.png">
+                </div>
+            </div>
+
+        </li>
+        <hr>
+        <li><a class="<%= global.path === '/home' ? 'active' : '' %>" href="/home">Home</span></a></li>
+        <li><a class="<%= global.path === '/first' ? 'active' : '' %>" href="/first">First</span></a></li>
+        <li><a class="<%= global.path === '/clienti' ? 'active' : '' %>" href="/clienti">Clienti</span></a></li>
+        <li><a class="<%= global.path === '/abbonamenti' ? 'active' : '' %>" href="/abbonamenti">Abbonamenti</span></a></li>
+
+    </ul>
+
 </header>

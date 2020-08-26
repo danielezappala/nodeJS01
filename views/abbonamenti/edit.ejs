@@ -1,0 +1,59 @@
+<%- include('../includes/head.ejs'); %>
+</head>
+<%- include('../includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <h3>
+            <%= title %>  
+        </h3>
+        <form class="col s12"
+            action="/abbonamenti/<% if (editing) { %>update/<%= abbonamento.id %><%} else { %>update/<%= abbonamento.id %><% } %>" method="POST">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="m_type" id="m_type"
+                        value="<% if (cliente) { %><%= cliente.id %><% } %>">
+                    <label class="active" for="m_type">Tipo</label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="m_type" id="m_type"
+                        value="<% if (editing) { %><%= abbonamento.m_type %><% } %>">
+                    <label class="active" for="m_type">Tipo</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input type="hidden" value="<%= abbonamento.id %>" required="" aria-required="true"
+                        name="customerId" id="customerId">
+                    <button class="btn disabled" type="submit" name='submit'><% if (editing) { %>Aggiorna
+                        abbonamento<% } else { %>Salva<% } %></button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+    <%- include('../includes/end.ejs'); %>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var options = {}
+            var instances = M.FormSelect.init(elems, options);
+        });
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+
+    </script>

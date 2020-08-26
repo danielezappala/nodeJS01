@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-const Customer = sequelize.define('customer',{
+const Customer = sequelize.define('customer',
+{
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -17,5 +18,9 @@ const Customer = sequelize.define('customer',{
         allowNull: false
     }
 });
+
+Customer.fullname = function () {
+    return this.name + ' ' + this.surname
+    }
 
 module.exports = Customer;

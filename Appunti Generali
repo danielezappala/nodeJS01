@@ -7,9 +7,20 @@ per installare un package usare il comando "npm install <package name>"
 npm nodemon: riavvia il server dopo ogni modifica
 
 npm install --save express: installa expressjs
-npm express-generator -e : genera l'albero delle cartelle e configura ejs come view engine
+npm install express-generator -e : genera l'albero delle cartelle e configura ejs come view engine
 
 npm install --save sql2: installa il modulo per la gestione di un database mysql
 npm install --save sequelize installa il modulo per il mapping di un database in oggetti
 
+npm install ejs
+
+// questo comando crea una struttura delle cartelle 
+//per l'applicazione express myapp
+// impostando il view engine su ejs
+express --view=ejs myapp
+successivamente
+cd myapp
+npm install
+DEBUG=myapp:* npm start (su MAC) 
+set DEBUG=myapp:* & npm start (su Windows)
 

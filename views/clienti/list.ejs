@@ -1,0 +1,54 @@
+<%- include('../includes/head.ejs'); %>
+</head>
+<%- include('../includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <% if (clienti.length > 0) { %>
+        <div>
+            <td>
+                <h1><%= title %></h1>
+            </td>
+        </div>
+        <table class="highlight">
+            <!--td>
+                    <div class="card__actions">
+                        <form action="/clienti/edit-customer" method="GET">
+                            <div style="flex-flow: column;">
+                                <input type="hidden" value="<%= false %>" name="editing">
+                                <button class="btn" style="margin-left: 1rem;" type="submit">Aggiungi cliente</button>
+                            </div>
+                            </form>
+                    </div-->
+            </td>
+
+            <% for (let cliente of clienti) { %>
+            <tr>
+                <td>
+                    <customer>
+                        <header>
+                            <div>
+                                <%= cliente.name + ' ' + cliente.surname %>
+                            </div>
+                        </header>
+                    </customer>
+                </td>
+                
+                <td><a <% if(cliente.memberships.length<1) { %> disabled <% } %> href="/clienti/memberships/<%= cliente.id %>" class="btn"> abbonamenti</a></td>
+                <td><a href="/clienti/edit/true/<%= cliente.id %>" class="btn">modifica</a></td>
+            </tr>
+
+            <% } %>
+
+        <%} %>
+        </table>
+
+        <div class="fixed-action-btn">
+            <a href="clienti/new" class="btn-floating btn-large red">
+                <i class="large material-icons light-blue darken-1">add</i>
+            </a>
+        </div>
+
+    </main>
+
+    <%- include('../includes/end.ejs'); %>

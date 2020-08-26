@@ -1,0 +1,43 @@
+<%- include('../includes/head.ejs'); %>
+</head>
+<%- include('../includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <% if (abbonamenti.length > 0) { %>
+     <div>
+        <td>
+            <h1><%= title %></h1>
+        </td>
+    </div>
+            <table class="highlight">
+         
+
+                <% for (let abbonamento of abbonamenti) { %>
+                <tr>
+                    <td>
+                        <membership>
+                            <header>
+                                <div>
+                                    <%= abbonamento.id + ' ' + abbonamento.m_type + ' ' + abbonamento.customer.surname%>
+                                </div>
+                            </header>
+                        </membership>
+                    </td>
+                    <td><a href="/abbonamenti/edit/true/<%= abbonamento.id %>" class="btn">modifica</a></td>
+                </tr>
+                <% } %>
+
+                <% } else { %>
+                <h3>Nessun abbonamento trovato</h3>
+                <% } %>
+            </table>
+
+                <form id="deleteButton" action="abbonamenti/edit/false" method="GET">
+                    <button class="btn-floating btn-large red">
+                        <i class="material-icons">add</i>
+                    </button>
+                </form>
+    </main>
+
+    <%- include('../includes/end.ejs'); %>

@@ -5,6 +5,18 @@ main {
 }
 
 /* Materialize */
+.btn {
+  background-color: #42a5f5
+  
+}
+
+.btn:hover { 
+  background-color: #1565c0
+}
+
+.sidenav li a {
+  color: white
+}
 
 /* label color */
 .input-field label {

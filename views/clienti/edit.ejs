@@ -1,0 +1,87 @@
+<%- include('../includes/head.ejs'); %>
+</head>
+<%- include('../includes/navigation.ejs'); %>
+
+<body>
+    <main>
+        <title><%= title %></title>
+        <form class="col s12"
+            action="/clienti/<% if (editing) { %>update/<%= cliente.id %> %><%} else { %>update/<%= cliente.id %><% } %>"
+            method="POST">
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="name" id="name"
+                        value="<% if (editing) { %><%= cliente.name %><% } %>">
+                    <label class="active" for="name">Cognome</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input type="text" class="validate" required="" aria-required="true" name="surname" id="surname"
+                        value="<% if (editing) { %><%= cliente.surname %><% } %>">
+                    <label class="active" for="surname">Cognome</label>
+                </div>
+            </div>
+        </form>
+            <memberships>
+                <h4>Abbonamenti</h4>
+                <% for (let membership of cliente.memberships) { %>
+                <table class='membership'>
+                    <tr>
+                        <td>
+                            <div>
+                                <%= membership.id %>
+                            </div>
+                        </td>
+                        <td>
+                            <div hidden>
+                                <%= membership.m_type %>
+                            </div>
+                        </td>
+                        <td>
+                            <form id="deleteButton" action="/abbonamenti/delete/<%=membership.id%>" method="GET">
+                                <button class="btn waves-effect waves-light red">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+      
+                <% } %>
+            </memberships>
+            <form id="newButton" action="/abbonamenti/edit/false&<%=cliente.id%>" method="GET">
+                <button class="btn waves-effect waves-light red">
+                    <i class="material-icons">add</i>
+                </button>
+            </form>
+            <div class="row">
+                <div class="input-field">
+                    <input type="hidden" value="<%= cliente.id %>" required="" aria-required="true" name="customerId"
+                        id="customerId">
+                    <button class="btn disabled" type="submit"
+                        name='submit'><% if (editing) { %>Aggiorna<% } else { %>Salva<% } %></button>
+                </div>
+            </div>
+
+
+    </main>
+
+    <%- include('../includes/end.ejs'); %>
+    <script>
+
+        var formChanged = false;
+        $("form").change(function (e) {
+            if (formChanged !== true) {
+                formChanged = true
+                $("button").toggleClass('disabled');
+            }
+        })
+
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        })
+
+    </script>

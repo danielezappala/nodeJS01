@@ -1,5 +1,3 @@
-const Cliente = require('../models/clienti');
-
 exports.getFirst = (req, res, next) => {
         res.render('first', { 
             title: 'first', 
